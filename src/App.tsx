@@ -15,6 +15,7 @@
  */
 
 import {useState} from 'react'
+import {useParams} from "react-router-dom";
 import {Container, Stack, TextField, Typography} from "@mui/material"
 import {
     addMonths,
@@ -37,15 +38,15 @@ const App = () => {
         years: number,
         months: number,
         days: number,
-        fulldays: number,
+        fullDays: number,
     }>()
-    const yearsOld = 37
+    const {yearsOld = "37"} = useParams<{ yearsOld: string }>()
 
     const handleBirthday = (v: string) => {
         setBirthday(v)
 
         // 37歳の誕生日を算出。
-        const bd37th = addYears(parseISO(v), yearsOld)
+        const bd37th = addYears(parseISO(v), Number.parseInt(yearsOld))
         setBirthday37th(bd37th)
 
         // 37歳の誕生日までの期間を算出。
@@ -54,8 +55,8 @@ const App = () => {
         const years = differenceInYears(bd37th, today)
         const months = differenceInMonths(bd37th, addYears(today, years))
         const days = differenceInDays(bd37th, addMonths(addYears(today, years), months))
-        const fulldays = differenceInDays(bd37th, today)
-        setDuration37th({past, years, months, days, fulldays})
+        const fullDays = differenceInDays(bd37th, today)
+        setDuration37th({past, years, months, days, fullDays})
     }
 
     return (
@@ -108,10 +109,10 @@ const App = () => {
                             `${yearsOld}歳 までの日数を計算します。` :
                             duration37th.past ?
                                 `${yearsOld}歳 と ` +
-                                `${-duration37th.fulldays}日 です。`
+                                `${-duration37th.fullDays}日 です。`
                                 :
                                 `${yearsOld}歳 まで ` +
-                                `${duration37th.fulldays}日 です。`
+                                `${duration37th.fullDays}日 です。`
                         }
                     </Typography>
                 </Stack>
