@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --build && vite build",
-    "deploy": "gh-pages --dist dist",
+    "deploy": "gh-pages --dist dist --repo https://github.com/agwlvssainokuni/agwlvssainokuni.github.io",
     "lint": "eslint .",
     "preview": "vite preview",
     "clean": "rimraf dist",
