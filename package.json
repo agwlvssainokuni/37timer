@@ -3,11 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://agwlvssainokuni.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "tsc --build && vite build",
-    "deploy": "gh-pages --dist dist --repo https://github.com/agwlvssainokuni/agwlvssainokuni.github.io",
+    "deploy": "gh-pages --dist dist --repo https://github.com/noragw/noragw.github.io",
     "lint": "eslint .",
     "preview": "vite preview",
     "clean": "rimraf dist",
