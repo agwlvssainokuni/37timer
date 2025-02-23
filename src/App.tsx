@@ -45,8 +45,15 @@ const App = () => {
     const handleBirthday = (v: string) => {
         setBirthday(v)
 
+        const bd = parseISO(v)
+        if (!isValid(bd)) {
+            setBirthday37th(undefined)
+            setDuration37th(undefined)
+            return
+        }
+
         // 37歳の誕生日を算出。
-        const bd37th = addYears(parseISO(v), Number.parseInt(yearsOld))
+        const bd37th = addYears(bd, Number.parseInt(yearsOld))
         setBirthday37th(bd37th)
 
         // 37歳の誕生日までの期間を算出。
@@ -81,7 +88,7 @@ const App = () => {
             <Container>
                 <Stack marginBottom={4} spacing={2}>
                     <Typography variant={"h5"} textAlign={"center"}>
-                        {!birthday37th || !isValid(birthday37th) ?
+                        {!birthday37th ?
                             `${yearsOld}歳 の誕生日を計算します。` :
                             lightFormat(
                                 birthday37th,
@@ -90,7 +97,7 @@ const App = () => {
                         }
                     </Typography>
                     <Typography variant={"h5"} textAlign={"center"}>
-                        {!duration37th || !birthday37th || !isValid(birthday37th) ?
+                        {!duration37th ?
                             `${yearsOld}歳 までの年月日数を計算します。` :
                             duration37th.past ?
                                 `${yearsOld}歳 と ` +
@@ -105,7 +112,7 @@ const App = () => {
                         }
                     </Typography>
                     <Typography variant={"h5"} textAlign={"center"}>
-                        {!duration37th || !birthday37th || !isValid(birthday37th) ?
+                        {!duration37th ?
                             `${yearsOld}歳 までの日数を計算します。` :
                             duration37th.past ?
                                 `${yearsOld}歳 と ` +
