@@ -126,7 +126,7 @@ const App = () => {
             </Container>
             <Container>
                 <Typography marginTop={1} marginBottom={1} textAlign={"center"}>
-                    Copyright &copy;, 2025, agwlvssainokuni
+                    Copyright &copy;, 2025, {import.meta.env.VITE_COPYRIGHT_HOLDER ?? "agwlvssainokuni"}
                 </Typography>
             </Container>
         </Container>
