@@ -69,7 +69,7 @@ const App = () => {
     return (
         <Container maxWidth={"sm"}>
             <Container>
-                <Typography variant={"h3"} marginTop={1} marginBottom={2}>
+                <Typography variant={"h4"} marginTop={2} marginBottom={2}>
                     🍀{yearsOld}🍀 タイマー
                 </Typography>
             </Container>
